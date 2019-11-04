@@ -1,3 +1,1 @@
-# autocomplete
-#### MR job for building the language model from wiki scraped data running on the hdfs
-#### frontend uses LAMP to basic Apache,MySQL setup, and uses MySQL wild card match the real-time input
+### some big data project/analysis using Hadoop MapReduce (java), Spark (scala since it's just better performance)
