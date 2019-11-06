@@ -10,7 +10,7 @@
 
 Above 1a and 1b uses two MapReduce jobs where job1 counts all occurances of all N-Gram(gram size = input, so if input = 4, then produces all 1, 2, 3, 4-Gram occurances). Job2 computes the probability and filtered out the highest probability inputPhrase + followingPhrase, output of Job2 writes to database directly
 
-Improving performance:
+**Improving performance**:
 * setted **threshold** t to ingnore phrases with frequency below t to improve the efficiency of shuffling. Size of t comes from command line input since t varies based on the size of input. used t = 20 in this project.
 * Storing only the top k words with the highest probabilities to reduce spage usage.
 
