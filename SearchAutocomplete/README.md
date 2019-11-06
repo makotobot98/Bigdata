@@ -1,10 +1,10 @@
 
 ### Steps
 ##### 1. offline processing the language model in MapReduce and store it in MySQL for real time responsive query
-1a. develop N-Gram library from the textfile scraped from Wikipidia
+**1a.** develop N-Gram library from the textfile scraped from Wikipidia
 > e.g., "How are you doing today" will transform into 2,3,4 Gram phrases, 2-Gram be {How are, are you, you doing, ...}, 3-Gram be {How are you, are you doing, you doing today ...}. N-gram is the contiguous sequence of n items from a given sequence of texts.
 
-1b. compute the conditional probability of each phrase within a sentence, develop language model which records the probability distribution over the entire sentences or texts
+**1b.** compute the conditional probability of each phrase within a sentence, develop language model which records the probability distribution over the entire sentences or texts
 
 > e.g., given input phrase to be How are you _? and N-grams from N-Gram library built from 1a relating to input phrase "How are you _?" = {doing today, doing, like a cup of tea, ....}. Compare all conditional probability P(doing today | inputPhrase), P(like a cup of tea | inputPhrase), and filter the N-gram phrase so that P(X | How are you) that's top-k and store the top-k related N-Gram phrases into the data base where key = inputPhrase.
 
