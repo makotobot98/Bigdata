@@ -21,7 +21,13 @@ object LoanAnalyze extends Logging with LoanReader with RejectionReader with Loa
     val loanInputPath = args(0)
     val rejectionInputPath = args(1)
     val outputPath = args(2)
-
+    /*
+    pipeline:
+      1. read and standardize load data: compute missing columns for the DS fields(DTI, has_collection)
+      2. read and standardize rejection loan data: fill nulls for missing columns
+      3. union two datasets and group by the same user/loan profile, to generate the analyzed results for each user/loan profile
+      4. write results as JSON
+    */
     //from LoanReader.scala
     val loanDs = readLoanData(loanInputPath, spark)
 

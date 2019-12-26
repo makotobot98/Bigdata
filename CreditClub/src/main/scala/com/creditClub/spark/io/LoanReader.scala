@@ -23,11 +23,12 @@ trait LoanReader extends Logging {
     val filteredRawDf = rawData
       .filter($"loan_status" =!= "Fully Paid") //filter not fully paid
 
-    //predefined fields for sql selection, convert into a column using col, check spark.sql.functions.col
+    //predefined fields to be selected, convert into a column using col, ref: spark.sql.functions.col
     val fields = List("loan_amnt", "term", "int_rate", "installment", "home_ownership",
       "annual_inc", "emp_length", "title", "addr_state", "loan_status", "tot_coll_amt")
       .map(col)
 
+    //select fields, and generate column specifying if has collection, and compute DTI = installment / (annual_inc / 12)
     filteredRawDf.select(fields: _*)
       .withColumn("has_collection", when($"tot_coll_amt" =!= "0", 1).otherwise(0)
         .as("has_collection"))

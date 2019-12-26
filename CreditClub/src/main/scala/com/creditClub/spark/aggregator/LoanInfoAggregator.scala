@@ -9,9 +9,10 @@ trait LoanInfoAggregator extends Logging {
 
   def loanInfoAggregator(rejectionDs: Dataset[LoanType], loanDs: Dataset[LoanType], spark: SparkSession): DataFrame = {
     import spark.implicits._
-
+    //use unionByName, so to resolve datasets to be unioned, have different column order
     val unionDs = rejectionDs.unionByName(loanDs)
 
+    //group and compute aggregated results
     val aggregatedDf = unionDs.groupBy("term", "home_ownership", "addr_state", "title", "emp_length")
       .agg(avg($"loan_amnt").as("avg_loan_amnt"),
         avg($"int_rate").as("avg_int_rate"),
