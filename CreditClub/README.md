@@ -1,3 +1,6 @@
+![alt text](https://github.com/makotobot98/Bigdata/blob/master/CreditClub/airflow/tree_dag.png)
+
+
 Through aggregating all user profiles and loan status, analyze if each user is likely to produce collection.
 
 **User Profile**: home_ownership, addr_state, emp_length, avg_annual_inc
