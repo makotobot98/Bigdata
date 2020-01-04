@@ -21,8 +21,7 @@ import org.apache.spark.sql.functions._
 object UserGenerateProcess extends Logging with BikeTripReader with UserReader{
   def main(args: Array[String]): Unit = {
     logInfo("Running user process")
-    val sparkconf = new SparkConf().setMaster("local[*]").setAppName("user " +
-      "generate process")
+
     val spark = SparkSession.builder().appName("Generating Unique User List")
       .getOrCreate()
     val conf: Configuration = new Configuration(args);

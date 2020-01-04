@@ -6,7 +6,7 @@ class Configuration(arguments: Seq[String]) extends ScallopConf(arguments) {
     "user.list.path",
     descr = "path to the user list",
     required = false,
-    default = Option("./unique_user_list")
+    default = Option("gs://unique_user_list")
   )
   //arg for the path to the config file specifying DataFrame fields to select
   // in key-value pair
@@ -32,9 +32,9 @@ class Configuration(arguments: Seq[String]) extends ScallopConf(arguments) {
       descr = "output data parent path",
       required = false,
       default = env() match {
-        case "test" => Option("gs://jiuzhangsuanfa/output")
-        case "stage" => Option("gs://jiuzhangsuanfa/output")
-        case "prod" => Option("gs://jiuzhangsuanfa/output")
+        case "test" => Option("gs://path")
+        case "stage" => Option("gs://path")
+        case "prod" => Option("gs://path")
         case _ => None
           throw new Exception(s"env error, env name can either be test, stage, prod \ncannot be ${env()}")
       })
@@ -44,7 +44,7 @@ class Configuration(arguments: Seq[String]) extends ScallopConf(arguments) {
       required = false,
       default = env() match {
         case "test" => Option("gs://testpath")
-        case "stage" => Option("./")
+        case "stage" => Option("gs://path")
         case "prod" => Option("gs://prodpath")
         case _ => None
           throw new Exception(s"env error, env name can either be test, stage, prod \ncannot be ${env()}")
