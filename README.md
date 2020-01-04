@@ -1,4 +1,4 @@
-# some big data project/analysis using Hadoop MapReduce (in Java), Spark (in Scala)
+# some big data project/analysis using Hadoop MapReduce (Java), Spark (Scala), automated scheduling using Airflow
 
 ### Some Highlights:
 
